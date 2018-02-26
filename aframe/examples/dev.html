@@ -45,16 +45,19 @@
 	</div>
 
 	<!-- Define your 3d scene and enabled ar.js -->
-	<a-scene embedded arjs='trackingMethod: best;'>
+	<a-scene embedded arjs='sourceType: webcam'>
+	
+        <!-- <a-scene embedded arjs='sourceType: webcam; sourceWidth: 240; sourceHeight: 180;'> -->		
+	<!-- <a-scene arjs='sourceType: image; sourceUrl:../../data/images/screenshot.png'> -->
+	<!-- <a-scene embedded arjs='sourceType: image; sourceUrl:../../data/images/armchair.jpg;'> -->
 
-			<a-assets>
+		<a-assets>
 				<a-asset-item id="assetAframe" src="demo-aframe-logo/models/ply/pikachu.ply"></a-asset-item>
 			</a-assets>
-
-			
-		<a-entity ply-model="src: #assetAframe" rotation='-90 0 0'scale='0.02 0.02 0.02'></a-entity>
-		<!-- Define a static camera -->
-		<a-camera-static/>
-
-	</a-scene>
+	
+			<!-- <a-marker type='unknown'> -->
+			<a-entity ply-model="src: #assetAframe" rotation='-90 0 0'scale='0.02 0.02 0.02'></a-entity>
+	
+			<a-marker-camera preset='hiro'></a-marker-camera>
+		</a-scene>
 </body>
