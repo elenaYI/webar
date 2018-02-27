@@ -1,30 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <!-- include aframe -->
-  <script src="vendor/aframe/build/aframe.min.js"></script>
-  <!-- include ar.js -->
-  <script src="../build/aframe-ar.js"></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
-</head>
-<body>
+<!-- <script src="vendor/aframe/build/aframe.min.js"></script> -->
+<script src="vendor/aframe/build/aframe.js"></script>
+<!-- include for artoolkit trackingBackend -->
+<script src='../../three.js/vendor/jsartoolkit5/build/artoolkit.min.js'></script>
+<script src='../../three.js/vendor/jsartoolkit5/js/artoolkit.api.js'></script>
+<!-- include for aruco trackingBackend -->
+<script src='../../three.js/vendor/js-aruco/src/svd.js'></script> 
+<script src='../../three.js/vendor/js-aruco/src/posit1.js'></script> 
+<script src='../../three.js/vendor/js-aruco/src/cv.js'></script> 
+<script src='../../three.js/vendor/js-aruco/src/aruco.js'></script> 
+<script src='../../three.js/src/threex/threex-aruco/threex-arucocontext.js'></script> 
+<script src='../../three.js/src/threex/threex-aruco/threex-arucodebug.js'></script>
+<!-- include for tango trackingBackend -->
+<script src='../../three.js/vendor/chromium-tango/THREE.WebAR.js'></script>
+<!-- include ar.js -->
+<script src='../../three.js/src/threex/threex-artoolkitprofile.js'></script>
+<script src='../../three.js/src/threex/threex-artoolkitsource.js'></script>
+<script src='../../three.js/src/threex/threex-artoolkitcontext.js'></script>
+<script src='../../three.js/src/threex/threex-arbasecontrols.js'></script>
+<script src='../../three.js/src/threex/threex-armarkercontrols.js'></script>
+<script src='../../three.js/src/threex/threex-arsmoothedcontrols.js'></script>
+<script src='../../three.js/src/threex/threex-hittesting-plane.js'></script>
+<script src='../../three.js/src/threex/threex-hittesting-tango.js'></script>
+<script src='../../three.js/src/threex/threex-armarkerhelper.js'></script>
+<script src='../../three.js/src/new-api/arjs-utils.js'></script>
+<script src='../../three.js/src/new-api/arjs-session.js'></script>
+<script src='../../three.js/src/new-api/arjs-anchor.js'></script>
+<script src='../../three.js/src/new-api/arjs-hittesting.js'></script>
+<script src='../../three.js/src/new-api/arjs-tangovideomesh.js'></script>
+<script src='../../three.js/src/new-api/arjs-tangopointcloud.js'></script>
+<script src='../../three.js/src/new-api/arjs-debugui.js'></script>
+<script src='../../three.js/src/markers-area/threex-armultimarkerutils.js'></script>
+<script src='../../three.js/src/markers-area/threex-armultimarkercontrols.js'></script>
+<script src='../../three.js/src/markers-area/threex-armultimarkerlearning.js'></script>
+<!-- include aframe-ar.js -->
+<script src="../src/system-arjs.js"></script>
+<script src="../src/component-anchor.js"></script>
+<script src="../src/component-hit-testing.js"></script>
+
+<!-- start the body of your page -->
+<body style='margin : 0px; overflow: hidden;'>
+	<!-- add some info at the top of the page -->
+	<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+		<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - tango example for a-frame by <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+	</div>
+
+	<!-- Define your 3d scene and enabled ar.js -->
+	<a-scene embedded arjs='trackingMethod: best;'>
+
+		<!-- Create a anchor to attach your augmented reality -->
+		<a-anchor hit-testing-enabled='true'>
+      
+		  <a-assets>
+        <a-asset-item id="assetAframe" src="models/ply/aframe.ply"></a-asset-item>
+      </a-assets>
   
-  <a-scene>
-    <!-- <a-assets>
-        <a-asset-item id="testply" src="demo-aframe-logo/models/ply/aframe.ply"></a-asset-item>
-    </a-assets>
-    
-    <a-entity ply-model="src: #testply" rotation='-90 0 0'scale='0.02 0.02 0.02'></a-entity>
+      <!-- <a-marker type='unknown'> -->
+      <a-entity ply-model="src: #assetAframe" rotation='-90 0 0'scale='0.02 0.02 0.02'></a-entity>
+		</a-anchor>
 
-    <a-text value="hello"></a-text>
+		<!-- Define a static camera -->
+		<a-camera-static/>
 
-    <a-sky color="#ECECEC"></a-sky>   -->
-    <a-box position="0 2.24 -4.22" color="red" width="1" height="1" depth="1"></a-box>
-  </a-scene>
-
+	</a-scene>
 </body>
-</html>
