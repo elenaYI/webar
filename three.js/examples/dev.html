@@ -135,7 +135,7 @@
 		// barcodeValue: 5,
 		
 		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + 'examples/marker-training/examples/pattern-files/pattern-hiro.patt',
+		patternUrl : THREEx.ArToolkitContext.baseURL + 'examples/marker-training/examples/pattern-files/pattern-kanji.patt',
 	})
 
 
@@ -153,12 +153,12 @@
 		smoothedControls.update(markerRoot)
 	})	
 	
-	// smoothedControls.addEventListener('becameVisible', function(){
-	// 	console.log('becameVisible event notified')
-	// })
-	// smoothedControls.addEventListener('becameUnVisible', function(){
-	// 	console.log('becameUnVisible event notified')
-	// })
+	smoothedControls.addEventListener('becameV`isible', function(){
+		alert('becameVisible event notified')
+	})
+	smoothedControls.addEventListener('becameUnVisible', function(){
+		alert('becameUnVisible event notified')
+	})
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add an object in the scene
