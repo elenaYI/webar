@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- include aframe -->
+  <script src="vendor/aframe/build/aframe.min.js"></script>
+  <!-- include ar.js -->
+  <script src="../build/aframe-ar.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
+</head>
+<body>
+  
+  <a-scene>
+    <a-assets>
+        <a-asset-item id="testply" src="demo-aframe-logo/models/ply/aframe.ply"></a-asset-item>
+    </a-assets>
+    
+    <a-entity ply-model="src: #testply" rotation='-90 0 0'scale='0.02 0.02 0.02'></a-entity>
+
+    <a-text value="hello"></a-text>
+  </a-scene>
+
+</body>
+</html>
