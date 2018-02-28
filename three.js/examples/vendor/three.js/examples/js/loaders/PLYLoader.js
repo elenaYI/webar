@@ -461,8 +461,8 @@ THREE.PLYLoader.prototype = {
 
 		if ( data instanceof ArrayBuffer ) {
 
-			var text = THREE.LoaderUtils.decodeText( new Uint8Array( data ) );
-			var header = parseHeader( text );
+			// var text = THREE.LoaderUtils.decodeText( new Uint8Array( data ) );
+			// var header = parseHeader( text );
 
 			geometry = header.format === 'ascii' ? parseASCII( text, header ) : parseBinary( data, header );
 
