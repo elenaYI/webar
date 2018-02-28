@@ -25,7 +25,7 @@
  * } );
  *
  */
-
+console.log('ply')
 
 THREE.PLYLoader = function ( manager ) {
 
