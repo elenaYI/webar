@@ -59,8 +59,6 @@
 
 	// Create a camera
 	var camera = new THREE.Camera();
-	// var cameraTarget = new THREE.Vector3( 0, -0.1, 0 );
-	// camera.lookAt( cameraTarget );
 	scene.add(camera);
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -172,7 +170,8 @@
 	// var arWorldRoot = markerRoot
 	var arWorldRoot = smoothedRoot
 
-	var mesh = new THREE.AxisHelper()
+	var meshAxis = new THREE.AxisHelper()
+	var meshModal;
 	// markerRoot.add(mesh)
 	// arWorldRoot.add(mesh)
 
@@ -207,13 +206,14 @@
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
 					arWorldRoot.add( mesh );
+					meshModal = mesh;
 				} );
 
 	// arWorldRoot.add( mesh );
 
 	
 	onRenderFcts.push(function(delta){
-		mesh.rotation.x += delta * Math.PI
+		meshModal.rotation.x += delta * Math.PI
 	})
 
 	//////////////////////////////////////////////////////////////////////////////////
