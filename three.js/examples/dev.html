@@ -138,7 +138,7 @@
 		// barcodeValue: 5,
 		
 		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + 'examples/marker-training/examples/pattern-files/pattern-girl.patt',
+		patternUrl : THREEx.ArToolkitContext.baseURL + 'examples/marker-training/examples/pattern-files/pattern-kanji.patt',
 	})
 
 
@@ -170,8 +170,8 @@
 	// var arWorldRoot = markerRoot
 	var arWorldRoot = smoothedRoot
 
-	// var mesh = new THREE.AxisHelper()
-	var meshModel;
+	var meshAxis = new THREE.AxisHelper()
+	var meshmodal;
 	// markerRoot.add(mesh)
 	// arWorldRoot.add(mesh)
 
@@ -206,14 +206,14 @@
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
 					arWorldRoot.add( mesh );
-					meshModel = mesh;
+					meshModal = mesh;
 				} );
 
 	// arWorldRoot.add( mesh );
 
 	
 	onRenderFcts.push(function(delta){
-		meshModel.rotation.x += delta * Math.PI
+		meshModal.rotation.x += delta * Math.PI
 	})
 
 	//////////////////////////////////////////////////////////////////////////////////
