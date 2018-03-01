@@ -210,9 +210,9 @@
 	// arWorldRoot.add( mesh );
 
 	
-	onRenderFcts.push(function(delta){
-		mesh.rotation.x += delta * Math.PI
-	})
+	// onRenderFcts.push(function(delta){
+		// mesh.rotation.x += delta * Math.PI
+	// })
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
@@ -235,8 +235,8 @@
 		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
 		lastTimeMsec	= nowMsec
 		// call each update function
-		onRenderFcts.forEach(function(onRenderFct){
-			onRenderFct(deltaMsec/1000, nowMsec/1000)
-		})
+		// onRenderFcts.forEach(function(onRenderFct){
+		// 	onRenderFct(deltaMsec/1000, nowMsec/1000)
+		// })
 	})
 </script></body>
