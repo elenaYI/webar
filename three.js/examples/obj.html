@@ -78,8 +78,8 @@
 
 				};
 
-				var textureLoader = new THREE.TextureLoader( manager );
-				var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
+				// var textureLoader = new THREE.TextureLoader( manager );
+				// var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
 
 				// model
 
@@ -99,8 +99,9 @@
 					object.traverse( function ( child ) {
 
 						if ( child instanceof THREE.Mesh ) {
+              console.log('obj img')
 
-							child.material.map = texture;
+							// child.material.map = texture;
 
 						}
 
