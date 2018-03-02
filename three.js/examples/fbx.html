@@ -86,6 +86,7 @@
 				// model
 				var loader = new THREE.FBXLoader();
 				loader.load( 'marker-training/examples/fbx-files/diamond.fbx', function ( object ) {
+          console.log('fbx')
 					object.mixer = new THREE.AnimationMixer( object );
 					mixers.push( object.mixer );
 					var action = object.mixer.clipAction( object.animations[ 0 ] );
