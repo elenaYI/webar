@@ -73,7 +73,7 @@
 				light.shadow.camera.left = -120;
 				light.shadow.camera.right = 120;
 				scene.add( light );
-				// scene.add( new THREE.CameraHelper( light.shadow.camera ) );
+				scene.add( new THREE.CameraHelper( light.shadow.camera ) );
 				// ground
 				var mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
 				mesh.rotation.x = - Math.PI / 2;
@@ -116,11 +116,11 @@
 			// //
 			function animate() {
 				requestAnimationFrame( animate );
-				// if ( mixers.length > 0 ) {
-				// 	for ( var i = 0; i < mixers.length; i ++ ) {
-				// 		mixers[ i ].update( clock.getDelta() );
-				// 	}
-				// }
+				if ( mixers.length > 0 ) {
+					for ( var i = 0; i < mixers.length; i ++ ) {
+						mixers[ i ].update( clock.getDelta() );
+					}
+				}
 				renderer.render( scene, camera );
 				stats.update();
 			}
