@@ -120,32 +120,32 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-				//
+				
 
-				// window.addEventListener( 'resize', onWindowResize, false );
+				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
 
-			// function onWindowResize() {
+			function onWindowResize() {
 
-			// 	windowHalfX = window.innerWidth / 2;
-			// 	windowHalfY = window.innerHeight / 2;
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
 
-			// 	camera.aspect = window.innerWidth / window.innerHeight;
-			// 	camera.updateProjectionMatrix();
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
 
-			// 	renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight );
 
-			// }
+			}
 
-			// function onDocumentMouseMove( event ) {
+			function onDocumentMouseMove( event ) {
 
-			// 	mouseX = ( event.clientX - windowHalfX ) / 2;
-			// 	mouseY = ( event.clientY - windowHalfY ) / 2;
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
 
-			// }
+			}
 
 			//
 
@@ -158,8 +158,8 @@
 
 			function render() {
 
-				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.position.z = -200;
 				camera.lookAt( scene.position );
 				// console.log(scene.position)
