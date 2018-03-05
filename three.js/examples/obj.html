@@ -38,7 +38,7 @@
 
 			var container;
 
-			var camera, scene, renderer;
+			var camera, fov, scene, renderer;
 
 			var mouseX = 0, mouseY = 0;
 
@@ -54,8 +54,8 @@
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
-
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				fov = 100;
+				camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, 1, 2000 );
 				camera.position.z = 250;
 
 				// scene
