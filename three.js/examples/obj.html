@@ -138,12 +138,12 @@
 
 			}
 
-			// function onDocumentMouseMove( event ) {
+			function onDocumentMouseMove( event ) {
 
-			// 	mouseX = ( event.clientX - windowHalfX ) / 2;
-			// 	mouseY = ( event.clientY - windowHalfY ) / 2;
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
 
-			// }
+			}
 
 			//
 
@@ -156,10 +156,13 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.x = -30;
+        camera.position.y = 40;
+        camera.position.z = 30;
 				
-				camera.lookAt( 0, -100, -100 );
+				camera.lookAt( scene.position );
 				// console.log(scene.position)
 
 				renderer.render( scene, camera );
