@@ -55,7 +55,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set(0, 0, -100);
+				camera.position.set(0, -100, -100);
 
 				// scene
 
@@ -106,7 +106,7 @@
 
 					} );
 
-					object.position.y = 0;
+					// object.position.y = - 95;
 					scene.add( object );
 
 				}, onProgress, onError );
