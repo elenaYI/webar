@@ -47,7 +47,7 @@
 
 
 			init();
-			// animate();
+			animate();
 
 
 			function init() {
@@ -55,7 +55,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
-				// camera.position.set(0, 0, 0);
+				camera.position.set(0, -100, -100);
 
 				// scene
 
@@ -118,7 +118,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 				//
 
@@ -128,8 +128,8 @@
 
 			function onWindowResize() {
 
-				// windowHalfX = window.innerWidth / 2;
-				// windowHalfY = window.innerHeight / 2;
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
 
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
@@ -138,29 +138,26 @@
 
 			}
 
-			// function onDocumentMouseMove( event ) {
+			function onDocumentMouseMove( event ) {
 
-			// 	mouseX = ( event.clientX - windowHalfX ) / 2;
-			// 	mouseY = ( event.clientY - windowHalfY ) / 2;
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
 
-			// }
+			}
 
 			//
 
-			// function animate() {
+			function animate() {
 
-			// 	requestAnimationFrame( animate );
-			// 	render();
+				requestAnimationFrame( animate );
+				render();
 
-			// }
+			}
 
 			function render() {
 
-				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
-				camera.position.x = -30;
-        camera.position.y = 40;
-        camera.position.z = 30;
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				
 				camera.lookAt( scene.position );
 				// console.log(scene.position)
