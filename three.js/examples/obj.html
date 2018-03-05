@@ -55,7 +55,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set(0, -100, -100);
+				camera.position.z(-100);
 
 				// scene
 
@@ -70,27 +70,27 @@
 
 				// texture
 
-				var manager = new THREE.LoadingManager();
-				manager.onProgress = function ( item, loaded, total ) {
+				// var manager = new THREE.LoadingManager();
+				// manager.onProgress = function ( item, loaded, total ) {
 
-					console.log( item, loaded, total );
+				// 	console.log( item, loaded, total );
 
-				};
+				// };
 
 				// var textureLoader = new THREE.TextureLoader( manager );
 				// var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
 
 				// model
 
-				var onProgress = function ( xhr ) {
-					if ( xhr.lengthComputable ) {
-						var percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( Math.round(percentComplete, 2) + '% downloaded' );
-					}
-				};
+				// var onProgress = function ( xhr ) {
+				// 	if ( xhr.lengthComputable ) {
+				// 		var percentComplete = xhr.loaded / xhr.total * 100;
+				// 		console.log( Math.round(percentComplete, 2) + '% downloaded' );
+				// 	}
+				// };
 
-				var onError = function ( xhr ) {
-				};
+				// var onError = function ( xhr ) {
+				// };
 
 				var loader = new THREE.OBJLoader( manager );
 				loader.load( 'marker-training/examples/fbx-files/diamond.obj', function ( object ) {
@@ -106,10 +106,10 @@
 
 					} );
 
-					// object.position.y = - 95;
+					object.position.y = - 95;
 					scene.add( object );
 
-				}, onProgress, onError );
+				});
 
 				//
 
@@ -118,32 +118,32 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 				//
 
-				window.addEventListener( 'resize', onWindowResize, false );
+				// window.addEventListener( 'resize', onWindowResize, false );
 
 			}
 
-			function onWindowResize() {
+			// function onWindowResize() {
 
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
+			// 	windowHalfX = window.innerWidth / 2;
+			// 	windowHalfY = window.innerHeight / 2;
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+			// 	camera.aspect = window.innerWidth / window.innerHeight;
+			// 	camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+			// 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-			}
+			// }
 
-			function onDocumentMouseMove( event ) {
+			// function onDocumentMouseMove( event ) {
 
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
+			// 	mouseX = ( event.clientX - windowHalfX ) / 2;
+			// 	mouseY = ( event.clientY - windowHalfY ) / 2;
 
-			}
+			// }
 
 			//
 
@@ -156,8 +156,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				
 				camera.lookAt( scene.position );
 				// console.log(scene.position)
