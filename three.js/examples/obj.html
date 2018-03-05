@@ -162,6 +162,7 @@
 				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 
 				camera.lookAt( scene.position );
+				console.log(scene.position)
 
 				renderer.render( scene, camera );
 
