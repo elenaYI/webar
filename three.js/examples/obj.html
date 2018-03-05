@@ -47,7 +47,7 @@
 
 
 			init();
-			animate();
+			// animate();
 
 
 			function init() {
@@ -55,7 +55,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set(0, -100, -100);
+				camera.position.set(0, 0, 0);
 
 				// scene
 
@@ -147,12 +147,12 @@
 
 			//
 
-			function animate() {
+			// function animate() {
 
-				requestAnimationFrame( animate );
-				render();
+			// 	requestAnimationFrame( animate );
+			// 	render();
 
-			}
+			// }
 
 			function render() {
 
