@@ -115,16 +115,16 @@
 			// 	renderer.setSize( window.innerWidth, window.innerHeight );
 			// }
 			// // //
-			// function animate() {
-			// 	requestAnimationFrame( animate );
-			// 	if ( mixers.length > 0 ) {
-			// 		for ( var i = 0; i < mixers.length; i ++ ) {
-			// 			mixers[ i ].update( clock.getDelta() );
-			// 		}
-			// 	}
-			// 	renderer.render( scene, camera );
-			// 	stats.update();
-			// }
+			function animate() {
+				requestAnimationFrame( animate );
+				if ( mixers.length > 0 ) {
+					for ( var i = 0; i < mixers.length; i ++ ) {
+						mixers[ i ].update( clock.getDelta() );
+					}
+				}
+				renderer.render( scene, camera );
+				stats.update();
+			}
 		</script>
 
 	</body>
