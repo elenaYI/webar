@@ -198,29 +198,47 @@
 
 		//loader ply file
 	
-	var loader = new THREE.OBJLoader();
+	// var loader = new THREE.OBJLoader();
 
-	loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( geometry ) {
-					geometry.computeVertexNormals();
-					var material = new THREE.MeshStandardMaterial( { color: 0x0055ff, flatShading: true } );
-					var mesh = new THREE.Mesh( geometry, material );
-					mesh.position.x =  0.02;
-					mesh.position.y =  -0.2;
-					mesh.position.z =  0.3;
-					mesh.scale.multiplyScalar( 0.006 );
-					mesh.castShadow = true;
-					mesh.receiveShadow = true;
-					arWorldRoot.add( mesh );
-					meshModal = mesh;
-				} );
+	// loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( geometry ) {
+	// 				geometry.computeVertexNormals();
+	// 				var material = new THREE.MeshStandardMaterial( { color: 0x0055ff, flatShading: true } );
+	// 				var mesh = new THREE.Mesh( geometry, material );
+	// 				mesh.position.x =  0.02;
+	// 				mesh.position.y =  -0.2;
+	// 				mesh.position.z =  0.3;
+	// 				mesh.scale.multiplyScalar( 0.006 );
+	// 				mesh.castShadow = true;
+	// 				mesh.receiveShadow = true;
+	// 				arWorldRoot.add( mesh );
+	// 				meshModal = mesh;
+	// 			} );
+  var onProgress = function ( xhr ) {
+					if ( xhr.lengthComputable ) {
+						var percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+					}
+				};
+				var onError = function ( xhr ) {
+				};
+				var loader = new THREE.OBJLoader( manager );
+				loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
+					object.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh ) {
+							child.material.map = texture;
+						}
+					} );
+					object.position.y = - 95;
+					arWorldRoot.add( object );
+				}, onProgress, onError );
 
 	// arWorldRoot.add( mesh );
 
 	
-	onRenderFcts.push(function(delta){
+	// onRenderFcts.push(function(delta){
 
-		meshModal.rotation.x += delta * Math.PI
-	})
+	// 	meshModal.rotation.x += delta * Math.PI
+	// })
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
