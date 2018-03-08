@@ -213,25 +213,20 @@
 	// 				arWorldRoot.add( mesh );
 	// 				meshModal = mesh;
 	// 			} );
-  var onProgress = function ( xhr ) {
-					if ( xhr.lengthComputable ) {
-						var percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( Math.round(percentComplete, 2) + '% downloaded' );
-					}
-				};
-				var onError = function ( xhr ) {
-				};
-				var loader = new THREE.OBJLoader();
+       var manager = new THREE.LoadingManager();
+
+				var loader = new THREE.OBJLoader( manager );
 				loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
-					// object.traverse( function ( child ) {
-					// 	if ( child instanceof THREE.Mesh ) {
-					// 		child.material.map = texture;
-					// 	}
-					// } );
-          object.scale.set(1);
+					object.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh ) {
+							// child.material.map = texture;
+              console.log('fengtinglogo')
+						}
+					} );
+          object.scale.set(0.9, 0.9, 0.9);
 					object.position.y = - 95;
 					arWorldRoot.add( object );
-				}, onProgress, onError );
+				});
 
 	// arWorldRoot.add( mesh );
 
