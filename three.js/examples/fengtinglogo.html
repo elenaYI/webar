@@ -221,7 +221,7 @@
 				};
 				var onError = function ( xhr ) {
 				};
-				var loader = new THREE.OBJLoader( manager );
+				var loader = new THREE.OBJLoader();
 				loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
 					object.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh ) {
