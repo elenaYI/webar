@@ -185,9 +185,9 @@
 			 
 			 var mtlLoader = new THREE.MTLLoader();
 
-				mtlLoader.setPath( './marker-training/examples/model-files/' );
+				// mtlLoader.setPath( './marker-training/examples/model-files/' );
 
-				mtlLoader.load( 'fengtinglogo.mtl', function( materials ) {
+				mtlLoader.load( './marker-training/examples/model-files/fengtinglogo.mtl', function( materials ) {
 
 					materials.preload();
 
@@ -195,9 +195,9 @@
 
 					objLoader.setMaterials( materials );
 
-					objLoader.setPath( './marker-training/examples/model-files/' );
+					// objLoader.setPath( './marker-training/examples/model-files/' );
 
-					objLoader.load( 'fengtinglogo.obj', function ( object ) {
+					objLoader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
 
 						// object.scale.multiplyScalar( 0.0006 )
 						// object.position.x =  0.02;
