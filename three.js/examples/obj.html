@@ -92,26 +92,39 @@
 				// var onError = function ( xhr ) {
 				// };
 
-				var loader = new THREE.OBJLoader( manager );
-				loader.load( 'marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
 
-					object.traverse( function ( child ) {
+								 var mtlLoader = new THREE.MTLLoader();
 
-						if ( child instanceof THREE.Mesh ) {
-              console.log('obj img')
+mtlLoader.setPath( 'marker-training/examples/model-files/' );
 
-							// child.material.map = texture;
+mtlLoader.load( 'fengtinglogo3d.mtl', function( materials ) {
 
-						}
+	materials.preload();
 
-					} );
-					// object.scale.set(0.1, 0.1, 0.1);
-					object.position.y = - 95;
-					// object.position.z = - 205;
-					object.rotation.y = -300;
-					scene.add( object );
+	var objLoader = new THREE.OBJLoader();
 
-				});
+	objLoader.setMaterials( materials );
+
+	objLoader.setPath( 'marker-training/examples/model-files/' );
+
+	objLoader.load( 'fengtinglogo3d.obj', function ( object ) {
+
+		object.scale.multiplyScalar( 0.006 )
+		object.position.x =  0.02;
+		object.position.y =  -0.2;
+		object.position.z =  -0.1;
+
+		// object.position.y = -10;
+		object.rotation.y = -50;
+		// object.rotation.z = -1000;
+		meshModal = object;
+
+		arWorldRoot.add( object );
+
+	});
+		
+});
+
 
 				//
 
