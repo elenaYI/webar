@@ -192,16 +192,17 @@
 					object.position.y = - 95;
 					object.rotation.y = 1;
 					object.rotation.z = -100;
+					meshModal = object;
 					arWorldRoot.add( object );
 				});
 
 	// arWorldRoot.add( mesh );
 
 	
-	// onRenderFcts.push(function(delta){
+	onRenderFcts.push(function(delta){
 
-	// 	meshModal.rotation.x += delta * Math.PI
-	// })
+		meshModal.rotation.x += delta * Math.PI
+	})
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
