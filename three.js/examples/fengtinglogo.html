@@ -17,6 +17,8 @@
 
 <!-- <script src="vendor/three.js/examples/js/loaders/PLYLoader.js"></script> -->
 <script src="vendor/three.js/examples/js/loaders/OBJLoader.js"></script>
+
+<script src="vendor/three.js/examples/js/loaders/MTLLoader.js"></script>
 <!-- <script src="vendor/three.js/examples/js/loaders/FBXLoader.js"></script> -->
 
 <script>THREEx.ArToolkitContext.baseURL = '../'</script>
@@ -179,27 +181,60 @@
 	// markerRoot.add(mesh)
 	// arWorldRoot.add(mesh)
 
-       var manager = new THREE.LoadingManager();
+			 var manager = new THREE.LoadingManager();
+			 
+			 
+			 var mtlLoader = new THREE.MTLLoader();
 
-				var loader = new THREE.OBJLoader( manager );
-				loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
-					object.traverse( function ( child ) {
-						if ( child instanceof THREE.Mesh ) {
-							// child.material.map = texture;
-              console.log('fengtinglogo')
-						}
-					} );
-					object.scale.multiplyScalar( 0.0006 )
-					object.position.x =  0.02;
-					object.position.y =  -0.2;
-					object.position.z =  -0.1;
+				mtlLoader.setPath( './marker-training/examples/model-files/' );
 
-					// object.position.y = -10;
-					object.rotation.y = -50;
-					// object.rotation.z = -1000;
-					meshModal = object;
-					arWorldRoot.add( object );
+				mtlLoader.load( 'fengtinglogo.mtl', function( materials ) {
+
+					materials.preload();
+
+					var objLoader = new THREE.OBJLoader();
+
+					objLoader.setMaterials( materials );
+
+					objLoader.setPath( './marker-training/examples/model-files/' );
+
+					objLoader.load( 'fengtinglogo.obj', function ( object ) {
+
+						object.scale.multiplyScalar( 0.0006 )
+						object.position.x =  0.02;
+						object.position.y =  -0.2;
+						object.position.z =  -0.1;
+
+						// object.position.y = -10;
+						object.rotation.y = -50;
+						// object.rotation.z = -1000;
+						meshModal = object;
+						arWorldRoot.add( object );
+
+					});
+						
 				});
+
+// var loader = new THREE.OBJLoader( manager );
+// 						loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
+// 						object.traverse( function ( child ) {
+// 							if ( child instanceof THREE.Mesh ) {
+// 								// child.material.map = texture;
+// 								console.log('fengtinglogo')
+// 							}
+// 						} );
+// 						object.scale.multiplyScalar( 0.0006 )
+// 						object.position.x =  0.02;
+// 						object.position.y =  -0.2;
+// 						object.position.z =  -0.1;
+
+// 						// object.position.y = -10;
+// 						object.rotation.y = -50;
+// 						// object.rotation.z = -1000;
+// 						meshModal = object;
+// 						arWorldRoot.add( object );
+// 					});
+
 
 	// arWorldRoot.add( mesh );
 
