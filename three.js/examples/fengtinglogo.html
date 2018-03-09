@@ -37,7 +37,7 @@
 		// antialias	: true,
 		alpha: true
 	});
-	// renderer.setClearColor(new THREE.Color('lightpink'), 0)
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 	// renderer.setPixelRatio( 2 );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.domElement.style.position = 'absolute'
@@ -183,57 +183,57 @@
 
 			 var manager = new THREE.LoadingManager();
 			 
-			 var mtlLoader = new THREE.MTLLoader();
+			//  var mtlLoader = new THREE.MTLLoader();
 
-				mtlLoader.setPath( 'marker-training/examples/model-files/' );
+			// 	mtlLoader.setPath( 'marker-training/examples/model-files/' );
 
-				mtlLoader.load( 'fengtinglogo3d.mtl', function( materials ) {
+			// 	mtlLoader.load( 'fengtinglogo3d.mtl', function( materials ) {
 
-					materials.preload();
+			// 		materials.preload();
 
-					var objLoader = new THREE.OBJLoader();
+			// 		var objLoader = new THREE.OBJLoader();
 
-					objLoader.setMaterials( materials );
+			// 		objLoader.setMaterials( materials );
 
-					objLoader.setPath( 'marker-training/examples/model-files/' );
+			// 		objLoader.setPath( 'marker-training/examples/model-files/' );
 
-					objLoader.load( 'fengtinglogo3d.obj', function ( object ) {
+			// 		objLoader.load( 'fengtinglogo3d.obj', function ( object ) {
 
-						object.scale.multiplyScalar( 0.006 )
-						object.position.x =  0.02;
-						object.position.y =  -0.2;
-						object.position.z =  -0.1;
+			// 			object.scale.multiplyScalar( 0.006 )
+			// 			object.position.x =  0.02;
+			// 			object.position.y =  -0.2;
+			// 			object.position.z =  -0.1;
 
-						// object.position.y = -10;
-						object.rotation.y = -50;
-						// object.rotation.z = -1000;
-						meshModal = object;
+			// 			// object.position.y = -10;
+			// 			object.rotation.y = -50;
+			// 			// object.rotation.z = -1000;
+			// 			meshModal = object;
 
-						arWorldRoot.add( object );
+			// 			arWorldRoot.add( object );
 
-					});
+			// 		});
 						
+			// 	});
+
+					var loader = new THREE.OBJLoader( manager );
+					loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
+					object.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh ) {
+							// child.material.map = texture;
+							console.log('fengtinglogo')
+						}
+					} );
+					object.scale.multiplyScalar( 0.0006 )
+					object.position.x =  0.02;
+					object.position.y =  -0.2;
+					// object.position.z =  ;
+
+					// object.position.y = -10;
+					object.rotation.y = -50;
+					// object.rotation.z = -1000;
+					meshModal = object;
+					arWorldRoot.add( object );
 				});
-
-// var loader = new THREE.OBJLoader( manager );
-// 						loader.load( './marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
-// 						object.traverse( function ( child ) {
-// 							if ( child instanceof THREE.Mesh ) {
-// 								// child.material.map = texture;
-// 								console.log('fengtinglogo')
-// 							}
-// 						} );
-// 						object.scale.multiplyScalar( 0.0006 )
-// 						object.position.x =  0.02;
-// 						object.position.y =  -0.2;
-// 						object.position.z =  -0.1;
-
-// 						// object.position.y = -10;
-// 						object.rotation.y = -50;
-// 						// object.rotation.z = -1000;
-// 						meshModal = object;
-// 						arWorldRoot.add( object );
-// 					});
 
 
 	// arWorldRoot.add( mesh );
