@@ -199,15 +199,15 @@
 
 					objLoader.load( './marker-training/examples/model-files/fengtinglogo3d.obj', function ( object ) {
 
-						// object.scale.multiplyScalar( 0.0006 )
-						// object.position.x =  0.02;
-						// object.position.y =  -0.2;
-						// object.position.z =  -0.1;
+						object.scale.multiplyScalar( 0.0006 )
+						object.position.x =  0.02;
+						object.position.y =  -0.2;
+						object.position.z =  -0.1;
 
-						// // object.position.y = -10;
-						// object.rotation.y = -50;
-						// // object.rotation.z = -1000;
-						// meshModal = object;
+						// object.position.y = -10;
+						object.rotation.y = -50;
+						// object.rotation.z = -1000;
+						meshModal = object;
 
 						arWorldRoot.add( object );
 
@@ -239,10 +239,10 @@
 	// arWorldRoot.add( mesh );
 
 	
-	// onRenderFcts.push(function(delta){
+	onRenderFcts.push(function(delta){
 
-	// 	meshModal.rotation.y += delta * Math.PI
-	// })
+		meshModal.rotation.y += delta * Math.PI
+	})
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
