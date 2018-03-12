@@ -152,7 +152,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
 				
 
@@ -173,9 +173,10 @@
 			}
 
 			function onDocumentMouseMove( event ) {
-
+				console.log('touch')
 				mouseX = ( event.clientX - windowHalfX ) / 2;
 				mouseY = ( event.clientY - windowHalfY ) / 2;
+
 
 			}
 
