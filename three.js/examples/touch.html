@@ -176,9 +176,9 @@
 				console.log('touch')
         // console.log('event.changedTouches:'+event.changedTouches )
 
-        event.changedTouches.forEach( (index) => {
-          console.log(event.changedTouches[index])
-        })
+      for(var i=0;i<event.changedTouches.length;i++) {
+        console.log(event.changedTouches[i])
+      }
 				mouseX = ( event.clientX - windowHalfX ) / 2;
 				mouseY = ( event.clientY - windowHalfY ) / 2;
         // console.log('mouseX'+mouseX,'mouseY'+mouseY);
