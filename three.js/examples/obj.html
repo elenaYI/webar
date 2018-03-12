@@ -177,7 +177,6 @@
 				mouseX = ( event.clientX - windowHalfX ) / 2;
 				mouseY = ( event.clientY - windowHalfY ) / 2;
 
-
 			}
 
 			//
@@ -190,7 +189,7 @@
 			}
 
 			function render() {
-
+				console.log('x'+camera.position.x,'y'+camera.position.y)
 				camera.position.x += ( mouseX - camera.position.x ) * .05;
 				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.position.z = -200;
