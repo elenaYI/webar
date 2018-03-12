@@ -174,7 +174,7 @@
 
 			function onDocumentMouseMove( event ) {
 				console.log('touch')
-        console.log(event.clientX )
+        console.log(event.changedTouches.clientX )
 				mouseX = ( event.clientX - windowHalfX ) / 2;
 				mouseY = ( event.clientY - windowHalfY ) / 2;
         console.log('mouseX'+mouseX,'mouseY'+mouseY);
