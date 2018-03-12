@@ -174,16 +174,12 @@
 			}
 
 			function onDocumentMouseMove( event ) {
-				console.log('touch')
-        // console.log(event.changedTouches[0].clientX)
+        console.log(event)
 
 				mouseX = ( event.changedTouches[0].clientX - windowHalfX ) / 2;
 				mouseY = ( event.changedTouches[0].clientY - windowHalfY ) / 2;
-        // console.log('mouseX'+mouseX,'mouseY'+mouseY);
 
 			}
-
-			//
 
 			function animate() {
 
@@ -195,7 +191,7 @@
 			function render() {
 
 				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				// camera.position.z = -200;
 				camera.lookAt( scene.position );
 
