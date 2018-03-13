@@ -35,11 +35,12 @@
     <script src="vendor/three.js/examples/js/loaders/MTLLoader.js"></script>
 
 		<script>
-      console.log('obj')
 
 			var container;
 
 			var camera, fov, scene, renderer;
+			
+			var lastCoord; 
 
 			var mouseX = 0, mouseY = 0;
 
@@ -72,26 +73,6 @@
 				// texture
 
 				var manager = new THREE.LoadingManager();
-				// manager.onProgress = function ( item, loaded, total ) {
-
-				// 	console.log( item, loaded, total );
-
-				// };
-
-				// var textureLoader = new THREE.TextureLoader( manager );
-				// var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
-
-				// model
-
-				// var onProgress = function ( xhr ) {
-				// 	if ( xhr.lengthComputable ) {
-				// 		var percentComplete = xhr.loaded / xhr.total * 100;
-				// 		console.log( Math.round(percentComplete, 2) + '% downloaded' );
-				// 	}
-				// };
-
-				// var onError = function ( xhr ) {
-				// };
 
 				var loader = new THREE.OBJLoader( manager );
 				loader.load( 'marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
@@ -115,38 +96,6 @@
 
 				});
 
-				// 				 var mtlLoader = new THREE.MTLLoader();
-
-				// mtlLoader.setPath( 'marker-training/examples/model-files/' );
-
-				// mtlLoader.load( 'fengtinglogo3d.mtl', function( materials ) {
-
-				// 	materials.preload();
-
-				// 	var objLoader = new THREE.OBJLoader();
-
-				// 	objLoader.setMaterials( materials );
-
-				// 	objLoader.setPath( 'marker-training/examples/model-files/' );
-
-				// 	objLoader.load( 'fengtinglogo3d.obj', function ( object ) {
-
-				// 		object.scale.multiplyScalar( 0.006 )
-				// 		object.position.x =  0.02;
-				// 		object.position.y =  -0.2;
-				// 		object.position.z =  -0.1;
-
-				// 		// object.position.y = -10;
-				// 		object.rotation.y = -50;
-				// 		// object.rotation.z = -1000;
-				// 		// meshModal = object;
-
-				// 		scene.add( object );
-
-				// 	});
-						
-				// });
-				//
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
@@ -155,10 +104,7 @@
 
 				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
-				
-
 				window.addEventListener( 'resize', onWindowResize, false );
-
 			}
 
 			function onWindowResize() {
@@ -175,11 +121,17 @@
 
 			function onDocumentMouseMove( event ) {
         console.log(event)
+				if(lastCoord > event.changedTouches[0].clientX) {
+					console.log('dayu')
+				} else {
+					console.log('xiaoyu')
+				}
 
 				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
 
 				mouseY = ( event.changedTouches[0].clientY - windowHalfY );
 
+				lastCoord = event.changedTouches[0].clientX;
 
         console.log('event.changedTouches[0].clientX :'+event.changedTouches[0].clientX ,'mouseX:'+mouseX,'mouseY:'+mouseY)
 
