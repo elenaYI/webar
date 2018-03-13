@@ -127,17 +127,30 @@
 				lastCoordY = event.changedTouches[0].clientY
 			}
 
-			function onDocumentMouseMove( event ) {
-				var evePos = event.changedTouches[0]
-				// 获取本次移动位置的偏移量
-				// mouseX = event.changedTouches[0].clientX - lastCoordX
-				// mouseY = event.changedTouches[0].clientY - lastCoordY
+// 			function onDocumentMouseMove( event ) {
+// 				var evePos = event.changedTouches[0]
+// 				// 获取本次移动位置的偏移量
+// 				// mouseX = event.changedTouches[0].clientX - lastCoordX
+// 				// mouseY = event.changedTouches[0].clientY - lastCoordY
 
-				        // 获取本次移动位置的偏移量
+// 				        // 获取本次移动位置的偏移量
+//         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
+//         mouseY = mouseX + event.changedTouches[0].clientY - lastCoordY
+				
+// 			}
+
+      function onDocumentMouseMove( event ) {
+        var evePos = event.changedTouches[0]
+        console.log(event.changedTouches[0])
+
+        // 获取本次移动位置的偏移量
         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
         mouseY = mouseX + event.changedTouches[0].clientY - lastCoordY
-				
-			}
+        
+        // 重置本次移动位置
+        lastCoordX = evePos.clientX
+        lastCoordY = evePos.clientY
+      }
 
 
 			function animate() {
