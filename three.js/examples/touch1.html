@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - loaders - OBJ loader</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+			}
+			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+		</style>
+	</head>
+
+	<body>
+		<div id="info">
+		<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - OBJLoader test
+		</div>
+
+		<script src='vendor/three.js/build/three.js'></script>
+    <script src="vendor/three.js/examples/js/loaders/OBJLoader.js"></script>
+    <script src="vendor/three.js/examples/js/loaders/MTLLoader.js"></script>
+
+		<script>
+
+			var container;
+
+			var camera, fov, scene, renderer;
+			
+			var lastCoordX = null, lastCoordY = null; 
+
+			var mouseX = 0, mouseY = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+
+
+			init();
+			animate();
+
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 250;
+
+				// scene
+
+				scene = new THREE.Scene();
+
+				var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+				scene.add( ambientLight );
+
+				var pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+				camera.add( pointLight );
+				scene.add( camera );
+
+				// texture
+
+				var manager = new THREE.LoadingManager();
+
+				var loader = new THREE.OBJLoader( manager );
+				loader.load( 'marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
+
+					object.traverse( function ( child ) {
+
+						if ( child instanceof THREE.Mesh ) {
+              console.log('obj img')
+
+							// child.material.map = texture;
+
+						}
+
+					} );
+					// object.scale.set(0.1, 0.1, 0.1);
+					object.position.y = 0;
+          console.log(object.position.y)
+					// object.position.z = - 205;
+					object.rotation.y = -300;
+					scene.add( object );
+
+				});
+
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
+
+				document.addEventListener( 'touchend', onTouchEnd, false );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+        console.log(event)
+				// if(lastCoordX || lastCoordY) {
+
+				// 	console.log(lastCoordX || lastCoordY)
+
+				// 	mouseX = ( lastCoordX - windowHalfX );
+
+				// 	mouseY = ( lastCoordY - windowHalfY )
+
+				// } else {
+
+				// 	mouseX = ( event.changedTouches[0].clientX - windowHalfX );
+
+				// 	mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
+				// }
+
+
+				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
+
+				mouseY = ( event.changedTouches[0].clientY - windowHalfY );	
+
+			}
+
+			function onTouchEnd(event) {
+
+				console.log(event)
+
+				lastCoordX = event.changedTouches[0].clientX;
+
+				lastCoordY = event.changedTouches[0].clientY;
+				
+				//改的
+				camera.position.x  = lastCoordX;
+				camera.position.y = lastCoordY;
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				render();
+
+			}
+
+			function render() {
+
+				camera.position.x += ( mouseX - camera.position.x );
+				camera.position.y += ( - mouseY - camera.position.y );
+				camera.position.z = -200;
+
+				// console.log(camera.position.x,camera.position.y);
+
+				camera.lookAt( scene.position );
+
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+</html>
