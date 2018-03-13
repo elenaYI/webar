@@ -40,7 +40,7 @@
 
 			var camera, fov, scene, renderer;
 			
-			var lastCoord; 
+			var lastCoordX = null, lastCoordY = null; 
 
 			var mouseX = 0, mouseY = 0;
 
@@ -121,17 +121,23 @@
 
 			function onDocumentMouseMove( event ) {
         // console.log(event)
-				if(lastCoord > event.changedTouches[0].clientX) {
-					console.log('dayu',lastCoord)
+				if(lastCoordX || lastCoordY) {
+					console.log(lastCoordX, lastCoordY)
+								
+					mouseX = ( lastCoordX - windowHalfX );
+
+					mouseY = ( lastCoordY - windowHalfY );
+
 				} else {
-					console.log('xiaoyu',lastCoord)
+
+					mouseX = ( event.changedTouches[0].clientX - windowHalfX );
+
+					mouseY = ( event.changedTouches[0].clientY - windowHalfY );
+					
 				}
 
-				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
-
-				mouseY = ( event.changedTouches[0].clientY - windowHalfY );
-
-				lastCoord = event.changedTouches[0].clientX;
+				lastCoordX = event.changedTouches[0].clientX;
+				lastCoordY = event.changedTouches[0].clientY;
 
 			}
 
