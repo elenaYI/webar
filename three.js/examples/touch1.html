@@ -123,21 +123,6 @@
 
 			function onDocumentMouseMove( event ) {
         console.log(event)
-				// if(lastCoordX || lastCoordY) {
-
-				// 	console.log(lastCoordX || lastCoordY)
-
-				// 	mouseX = ( lastCoordX - windowHalfX );
-
-				// 	mouseY = ( lastCoordY - windowHalfY )
-
-				// } else {
-
-				// 	mouseX = ( event.changedTouches[0].clientX - windowHalfX );
-
-				// 	mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
-				// }
-
 
 				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
 
@@ -153,9 +138,8 @@
 
 				lastCoordY = event.changedTouches[0].clientY;
 				
-				//改的
-				camera.position.x  = lastCoordX;
-				camera.position.y = lastCoordY;
+				camera.position.x  = (lastCoordX - camera.position.x);
+				camera.position.y = (lastCoordY - camera.position.y);
 			}
 
 			function animate() {
@@ -167,8 +151,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x );
-				camera.position.y += ( - mouseY - camera.position.y );
+				camera.position.x = ( mouseX - camera.position.x );
+				camera.position.y = ( - mouseY - camera.position.y );
 				camera.position.z = -200;
 
 				// console.log(camera.position.x,camera.position.y);

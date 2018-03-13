@@ -123,21 +123,6 @@
 
 			function onDocumentMouseMove( event ) {
         console.log(event)
-				// if(lastCoordX || lastCoordY) {
-
-				// 	console.log(lastCoordX || lastCoordY)
-
-				// 	mouseX = ( lastCoordX - windowHalfX );
-
-				// 	mouseY = ( lastCoordY - windowHalfY )
-
-				// } else {
-
-				// 	mouseX = ( event.changedTouches[0].clientX - windowHalfX );
-
-				// 	mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
-				// }
-
 
 				mouseX = ( event.changedTouches[0].clientX + (lastCoordX - event.changedTouches[0].clientX)- windowHalfX );
 
