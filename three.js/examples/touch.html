@@ -127,22 +127,21 @@
 
 					console.log(lastCoordX || lastCoordY)
 
-					mouseX = ( event.changedTouches[0].clientX - windowHalfX );
-
-					mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
-
-				} 
 					mouseX = ( lastCoordX - windowHalfX );
 
-					mouseY = ( lastCoordY - windowHalfY );
+					mouseY = ( lastCoordY - windowHalfY )
+				} else {
+					mouseX = ( event.changedTouches[0].clientX - windowHalfX );
 
-				lastCoordX = event.changedTouches[0].clientX;
-				lastCoordY = event.changedTouches[0].clientY;
+			mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
+				}
 
 			}
 
 			function onTouchEnd(event) {
 				console.log(event)
+				lastCoordX = event.changedTouches[0].clientX;
+				lastCoordY = event.changedTouches[0].clientY;
 			}
 
 			function animate() {
