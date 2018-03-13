@@ -104,6 +104,8 @@
 
 				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
+				document.addEventListener( 'touchend', onTouchEnd, false );
+
 				window.addEventListener( 'resize', onWindowResize, false );
 			}
 
@@ -137,6 +139,10 @@
 				lastCoordX = event.changedTouches[0].clientX;
 				lastCoordY = event.changedTouches[0].clientY;
 
+			}
+
+			function onTouchEnd(event) {
+				console.log(event)
 			}
 
 			function animate() {
