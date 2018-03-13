@@ -138,21 +138,10 @@
 				// 	mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
 				// }
 
-				if(lastCoordX || lastCoordY) {
 
-					console.log(1)
-
-					mouseX = ( lastCoordX - event.changedTouches[0].clientX - windowHalfX );
-
-					mouseY = ( lastCoordY - windowHalfY )
-
-				}	else {
-					
-					console.log(2)
 				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
 
 				mouseY = ( event.changedTouches[0].clientY - windowHalfY );	
-				}
 
 			}
 
@@ -174,8 +163,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x );
-				camera.position.y += ( - mouseY - camera.position.y );
+				camera.position.x += ( mouseX - camera.position.x ) - lastCoordX ;
+				camera.position.y += ( - mouseY - camera.position.y ) - lastCoordY;
 				camera.position.z = -200;
 
 				// console.log(camera.position.x,camera.position.y);
