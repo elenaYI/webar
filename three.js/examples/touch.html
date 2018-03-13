@@ -120,11 +120,11 @@
 			}
 
 			function onDocumentMouseMove( event ) {
-        console.log(event)
+        // console.log(event)
 				if(lastCoord > event.changedTouches[0].clientX) {
-					console.log('dayu')
+					console.log('dayu',lastCoord)
 				} else {
-					console.log('xiaoyu')
+					console.log('xiaoyu',lastCoord)
 				}
 
 				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
@@ -132,8 +132,6 @@
 				mouseY = ( event.changedTouches[0].clientY - windowHalfY );
 
 				lastCoord = event.changedTouches[0].clientX;
-
-        console.log('event.changedTouches[0].clientX :'+event.changedTouches[0].clientX ,'mouseX:'+mouseX,'mouseY:'+mouseY)
 
 			}
 
