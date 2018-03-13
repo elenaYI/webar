@@ -12,6 +12,11 @@
 				margin: 0px;
 				overflow: hidden;
 			}
+			body::-webkit-scrollbar {
+
+				display: none;/*隐藏滚轮*/
+
+				}
 			#info {
 				color: #fff;
 				position: absolute;
@@ -126,18 +131,6 @@
 				lastCoordX = event.changedTouches[0].clientX
 				lastCoordY = event.changedTouches[0].clientY
 			}
-
-// 			function onDocumentMouseMove( event ) {
-// 				var evePos = event.changedTouches[0]
-// 				// 获取本次移动位置的偏移量
-// 				// mouseX = event.changedTouches[0].clientX - lastCoordX
-// 				// mouseY = event.changedTouches[0].clientY - lastCoordY
-
-// 				        // 获取本次移动位置的偏移量
-//         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
-//         mouseY = mouseX + event.changedTouches[0].clientY - lastCoordY
-				
-// 			}
 
       function onDocumentMouseMove( event ) {
         var evePos = event.changedTouches[0]
