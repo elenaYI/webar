@@ -141,8 +141,8 @@
 				if(lastCoordX || lastCoordY) {
 
 					console.log(1)
-					
-					mouseX = ( lastCoordX - windowHalfX );
+
+					mouseX = ( lastCoordX - event.changedTouches[0].clientX - windowHalfX );
 
 					mouseY = ( lastCoordY - windowHalfY )
 
