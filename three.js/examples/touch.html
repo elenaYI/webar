@@ -123,24 +123,32 @@
 
 			function onDocumentMouseMove( event ) {
         // console.log(event)
-				if(lastCoordX || lastCoordY) {
+				// if(lastCoordX || lastCoordY) {
 
-					console.log(lastCoordX || lastCoordY)
+				// 	console.log(lastCoordX || lastCoordY)
 
-					mouseX = ( lastCoordX - windowHalfX );
+				// 	mouseX = ( lastCoordX - windowHalfX );
 
-					mouseY = ( lastCoordY - windowHalfY )
-				} else {
-					mouseX = ( event.changedTouches[0].clientX - windowHalfX );
+				// 	mouseY = ( lastCoordY - windowHalfY )
 
-			mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
-				}
+				// } else {
+				// 	mouseX = ( event.changedTouches[0].clientX - windowHalfX );
+
+				// 	mouseY = ( event.changedTouches[0].clientY - windowHalfY );		
+				// }
+
+					mouseX = ( event.changedTouches[0].clientX -lastCoordX - windowHalfX );
+
+					mouseY = ( event.changedTouches[0].clientY - lastCoordY - windowHalfY );		
 
 			}
 
 			function onTouchEnd(event) {
+
 				console.log(event)
+
 				lastCoordX = event.changedTouches[0].clientX;
+
 				lastCoordY = event.changedTouches[0].clientY;
 			}
 
@@ -156,6 +164,9 @@
 				camera.position.x += ( mouseX - camera.position.x );
 				camera.position.y += ( - mouseY - camera.position.y );
 				camera.position.z = -200;
+
+				console.log(camera.position.x,camera.position.y);
+
 				camera.lookAt( scene.position );
 
 
