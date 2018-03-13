@@ -141,18 +141,10 @@
 				if(lastCoordX || lastCoordY) {
 
 					console.log(1)
+					
+					mouseX = ( lastCoordX - windowHalfX );
 
-					if(lastCoordX > event.changedTouches[0].clientX) {
-						
-						
-						mouseX = ( event.changedTouches[0].clientX +(lastCoordX - event.changedTouches[0].clientX)  - windowHalfX );
-
-					mouseY = ( event.changedTouches[0].clientY - lastCoordY - windowHalfY );	
-					} else {
-						mouseX = ( event.changedTouches[0].clientX - (lastCoordX - event.changedTouches[0].clientX) - windowHalfX );
-
-					mouseY = ( event.changedTouches[0].clientY - lastCoordY - windowHalfY );
-					}
+					mouseY = ( lastCoordY - windowHalfY )
 
 				}	else {
 					
@@ -161,6 +153,7 @@
 
 				mouseY = ( event.changedTouches[0].clientY - windowHalfY );	
 				}
+
 			}
 
 			function onTouchEnd(event) {
