@@ -106,7 +106,7 @@
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
-				console.log('camera.position.z:'+camera.position.z)
+				
 			}
 
 			function onWindowResize() {
@@ -149,6 +149,8 @@
 
 
 				renderer.render( scene, camera );
+
+				console.log('camera.position.z:'+camera.position.z)
 
 			}
 
