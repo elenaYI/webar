@@ -63,7 +63,7 @@
 
 			init();
 			animate();
-			calc();
+			// calc();
 
 			function init() {
 
@@ -176,9 +176,9 @@
 
 				// camera.position.x += ( mouseX - camera.position.x );
 				// camera.position.y += ( - mouseY - camera.position.y );
-				camera.position.x = mouseX;
-				camera.position.y = mouseY;
-				camera.position.z = zPosition;
+				camera.position.x = document.getElementsByClassName("x")[0].value - 0;
+				camera.position.y = document.getElementsByClassName("y")[0].value - 0;
+				camera.position.z = document.getElementsByClassName("z")[0].value - 0;
 
 				// console.log(camera.position.x,camera.position.y);
 
