@@ -3,7 +3,7 @@
 	<head>
 		<title>three.js webgl - loaders - OBJ loader</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
 				font-family: Monospace;
@@ -12,6 +12,11 @@
 				margin: 0px;
 				overflow: hidden;
 			}
+			body::-webkit-scrollbar {
+
+				display: none;/*隐藏滚轮*/
+
+				}
 			#info {
 				color: #fff;
 				position: absolute;
@@ -26,9 +31,11 @@
 	</head>
 
 	<body>
-		<div id="info">
-		<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - OBJLoader test
-		</div>
+			x:<input type="text" class="x" />
+			y:<input type="text" class="y" />
+			z:<input type="text" class="z" />
+
+		
 
 		<script src='vendor/three.js/build/three.js'></script>
     <script src="vendor/three.js/examples/js/loaders/OBJLoader.js"></script>
@@ -39,10 +46,12 @@
 			var container;
 
 			var camera, fov, scene, renderer;
-			
-			var lastCoordX = null, lastCoordY = null; 
-
+			// 上次移动的最后位置
+			var lastCoordX = 0, lastCoordY = 0; 
+			// 物体移动的位置
 			var mouseX = 0, mouseY = 0;
+			
+			var zPosition = -200;
 
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
@@ -102,11 +111,19 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
+				// document.addEventListener('touchstart', onTouchStart, false);
 
-				document.addEventListener( 'touchend', onTouchEnd, false );
+				// document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
 				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function calc() {
+				mouseX = document.getElementsByClassName("x")[0].value;
+        mouseY = document.getElementsByClassName("y")[0].value;
+				zPosition = document.getElementsByClassName("z")[0].value;
+				console.log('mouseX:'+mouseX,'mouseY'+mouseY,'zPosition:'+zPosition)
 			}
 
 			function onWindowResize() {
@@ -121,26 +138,28 @@
 
 			}
 
-			function onDocumentMouseMove( event ) {
-        console.log(event)
-
-				mouseX = ( event.changedTouches[0].clientX - windowHalfX );
-
-				mouseY = ( event.changedTouches[0].clientY - windowHalfY );	
-
+			function onTouchStart(event) {
+				// 初始化本次移动的位置
+				lastCoordX = event.changedTouches[0].clientX
+				lastCoordY = event.changedTouches[0].clientY
 			}
 
-			function onTouchEnd(event) {
+      function onDocumentMouseMove( event ) {
+				console.log('windowHalfX:'+windowHalfX)
+        var evePos = event.changedTouches[0]
+//         console.log(event.changedTouches[0])
 
-				console.log(event)
+        // 获取本次移动位置的偏移量 
+//         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
+//         mouseY = mouseY + event.changedTouches[0].clientY - lastCoordY
+        
+        // 重置本次移动位置
+        lastCoordX = evePos.clientX
+        lastCoordY = evePos.clientY
 
-				lastCoordX = event.changedTouches[0].clientX;
+				console.log('mouseX:'+mouseX,'mouseY:'+mouseY)
+      }
 
-				lastCoordY = event.changedTouches[0].clientY;
-				
-				camera.position.x  = (lastCoordX - camera.position.x);
-				camera.position.y = (lastCoordY - camera.position.y);
-			}
 
 			function animate() {
 
@@ -151,9 +170,11 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x );
-				camera.position.y += ( - mouseY - camera.position.y );
-				camera.position.z = -200;
+				// camera.position.x += ( mouseX - camera.position.x );
+				// camera.position.y += ( - mouseY - camera.position.y );
+				camera.position.x = mouseX;
+				camera.position.y = mouseY;
+				camera.position.z = zPosition;
 
 				// console.log(camera.position.x,camera.position.y);
 
