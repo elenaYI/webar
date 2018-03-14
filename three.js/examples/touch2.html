@@ -112,6 +112,7 @@
 				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
 				window.addEventListener( 'resize', onWindowResize, false );
+
 			}
 
 			function onWindowResize() {
@@ -139,7 +140,7 @@
 
         // 获取本次移动位置的偏移量 
         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
-        mouseY = mouseX + event.changedTouches[0].clientY - lastCoordY
+        mouseY = mouseY + event.changedTouches[0].clientY - lastCoordY
         
         // 重置本次移动位置
         lastCoordX = evePos.clientX
