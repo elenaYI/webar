@@ -122,21 +122,12 @@
 			}
 
 			function onDocumentMouseMove( event ) {
-        console.log(event)
 
-				mouseX = ( event.changedTouches[0].clientX + (lastCoordX - event.changedTouches[0].clientX)- windowHalfX );
+				mouseX =  event.changedTouches[0].clientX - windowHalfX;
 
-				mouseY = ( event.changedTouches[0].clientY + (lastCoordY - event.changedTouches[0].clientY)- windowHalfY );	
+				mouseY =  event.changedTouches[0].clientY - windowHalfY;	
+				console.log('mouseX:'+mouseX,'mouseY:'+mouseY)
 
-			}
-
-			function onTouchEnd(event) {
-
-				console.log(event)
-
-				lastCoordX = event.changedTouches[0].clientX;
-
-				lastCoordY = event.changedTouches[0].clientY;
 			}
 
 			function animate() {

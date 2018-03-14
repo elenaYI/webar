@@ -3,7 +3,7 @@
 	<head>
 		<title>three.js webgl - loaders - OBJ loader</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
 				font-family: Monospace;
@@ -133,16 +133,19 @@
 			}
 
       function onDocumentMouseMove( event ) {
+				console.log('windowHalfX:'+windowHalfX)
         var evePos = event.changedTouches[0]
-        console.log(event.changedTouches[0])
+//         console.log(event.changedTouches[0])
 
-        // 获取本次移动位置的偏移量
+        // 获取本次移动位置的偏移量 
         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
         mouseY = mouseX + event.changedTouches[0].clientY - lastCoordY
         
         // 重置本次移动位置
         lastCoordX = evePos.clientX
         lastCoordY = evePos.clientY
+
+				console.log('mouseX:'+mouseX,'mouseY:'+mouseY)
       }
 
 
