@@ -159,8 +159,11 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x );
-				camera.position.y += ( - mouseY - camera.position.y );
+				// camera.position.x += ( mouseX - camera.position.x );
+				// camera.position.y += ( - mouseY - camera.position.y );
+
+				camera.position.x = 500;
+				camera.position.y = 0;
 				camera.position.z = -200;
 
 				// console.log(camera.position.x,camera.position.y);
