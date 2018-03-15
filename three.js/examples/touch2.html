@@ -51,6 +51,9 @@
 
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
+			
+			//定义全局model
+			var object;
 
 
 			init();
@@ -96,8 +99,9 @@
 					object.position.y = 0;
           console.log(object.position.y)
 					// object.position.z = - 205;
-					object.rotation.y = -300;
+					// object.rotation.y = -300;
 					scene.add( object );
+					object = object;
 
 				});
 
@@ -141,6 +145,11 @@
         // 获取本次移动位置的偏移量 
         mouseX = mouseX + event.changedTouches[0].clientX - lastCoordX
         mouseY = mouseY + event.changedTouches[0].clientY - lastCoordY
+
+				var rotation = new THREE.Euler();
+
+				object.rotation.y = mouseY;
+				object.rotation.x = mouseX;
         
         // 重置本次移动位置
         lastCoordX = evePos.clientX
