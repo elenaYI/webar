@@ -53,7 +53,7 @@
 			var windowHalfY = window.innerHeight / 2;
 			
 			//定义全局model
-			var object;
+			var meshObject;
 
 
 			init();
@@ -103,9 +103,9 @@
 					// object.position.z = - 205;
 					// object.rotation.y = -300;
 					scene.add( object );
-					object = object;
+					meshObject = object;
 					
-				console.log('2:'+object);
+				console.log('2:'+meshObject);
 
 				});
 
@@ -141,7 +141,7 @@
 				lastCoordY = event.changedTouches[0].clientY
 			}
 
-      function onDocumentMouseMove( event, object ) {
+      function onDocumentMouseMove( event ) {
 				console.log('windowHalfX:'+windowHalfX)
         var evePos = event.changedTouches[0]
 //         console.log(event.changedTouches[0])
@@ -154,7 +154,7 @@
 
 				// object.rotation.y = mouseY;
 				// object.rotation.x = mouseX;
-				console.log('3:'+object);
+				console.log('3:'+meshObject);
         
         // 重置本次移动位置
         lastCoordX = evePos.clientX
