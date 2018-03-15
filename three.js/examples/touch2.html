@@ -84,6 +84,8 @@
 
 				var loader = new THREE.OBJLoader( manager );
 				loader.load( 'marker-training/examples/model-files/fengtinglogo.obj', function ( object ) {
+					
+				console.log('1:'+object);
 
 					object.traverse( function ( child ) {
 
@@ -102,6 +104,8 @@
 					// object.rotation.y = -300;
 					scene.add( object );
 					object = object;
+					
+				console.log('2:'+object);
 
 				});
 
@@ -148,8 +152,9 @@
 
 				var rotation = new THREE.Euler();
 
-				object.rotation.y = mouseY;
-				object.rotation.x = mouseX;
+				// object.rotation.y = mouseY;
+				// object.rotation.x = mouseX;
+				console.log('3:'+object);
         
         // 重置本次移动位置
         lastCoordX = evePos.clientX
